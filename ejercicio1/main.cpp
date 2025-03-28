@@ -7,13 +7,21 @@ int main(){
     int opcion;
     Tiempo tiempo; 
     cout << "----OPCIONES-----"<< endl;
-    cout << "1) Incializacion por default: " << endl;
-    cout << "2) Inicializacion con horas: " << endl;
-    cout << "3) Inicializacion con horas y minutos: " << endl;
-    cout << "4) Inicializacion con horas, minutos y segundos: " << endl;
-    cout << "5) Inicializacion con horas, minutos, segundos y periodo: ";
+    cout << "1) Incializacion por default " << endl;
+    cout << "2) Inicializacion con horas " << endl;
+    cout << "3) Inicializacion con horas y minutos " << endl;
+    cout << "4) Inicializacion con horas, minutos y segundos " << endl;
+    cout << "5) Inicializacion con horas, minutos, segundos y periodo " << endl;
     cout << "Opcion =  ";
     cin >> opcion;
+
+        
+    while(opcion > 5 || opcion < 1 || cin.fail()) {
+        cout << "El parametro ingresado es incorrecto , vuele a itentar (1-5): ";
+        cin.clear(); // limpia el cin
+        cin.ignore(10000,'\n'); //
+        cin >> opcion;
+    }  
 
     switch(opcion){
         case 1: {
@@ -82,8 +90,9 @@ int main(){
             
 
     }
-    int subOpciones;
-    while (subOpciones != 10){
+    int subOpciones=0;
+    while (subOpciones != 11){
+        cout << endl;
         cout << "1) Cambiar la hora: " << endl;
         cout << "2) Ver la hora: " << endl; //poner como queda 
         cout << "3) Cambiar los minutos: "<< endl;
@@ -91,11 +100,17 @@ int main(){
         cout << "5) Cambiar los segundos: "<< endl;
         cout << "6) Ver los segundos: "<< endl;
         cout << "7) Cambiar el periodo: "<< endl;
-        cout << "x) Ver el periodo: "<< endl;  //CON EL DE 12HS ESTA? 
-        cout << "8) Ver hora en formato 24hs: " << endl;
-        cout << "9) Ver la hora en formato 12hs: " << endl;
-        cout << "10) salir"<< endl;
+        cout << "8) Ver el periodo: "<< endl;  //CON EL DE 12HS ESTA? 
+        cout << "9) Ver hora en formato 24hs: " << endl;
+        cout << "10) Ver la hora en formato 12hs: " << endl;
+        cout << "11) salir"<< endl;
         cin >> subOpciones;
+        cout << endl;
+
+        if (subOpciones > 11 || subOpciones < 1 || cin.fail()){ //fail manejo de stirng 
+            cout << "El parametro ingresado es incorrecto , vuele a itentar (1-10): ";
+            continue;    
+        }
 
         switch (subOpciones){
             case 1: {
@@ -107,7 +122,7 @@ int main(){
             }
 
             case 2: {
-                tiempo.mostrarTiempo();
+                cout << "Las hora es: " << tiempo.gethoras() << endl;
                 break; 
             }
 
@@ -120,7 +135,7 @@ int main(){
             }
 
             case 4:{
-                tiempo.mostrarTiempo();
+                cout << "Los minutos son: " << tiempo.getminutos() << endl;
                 break;
             }
 
@@ -133,7 +148,7 @@ int main(){
             }
 
             case 6: {
-                tiempo.mostrarTiempo();
+                cout << "Los segundos son: " << tiempo.getsegundos() << endl;
                 break; 
             } 
 
@@ -146,16 +161,21 @@ int main(){
             }
 
             case 8: {
-                tiempo.mostrarTodoElTiempo();
+                cout << "El periodo es: " << tiempo.getabreviaturas() << endl; 
                 break;
             }
 
             case 9: {
+                tiempo.mostrarTodoElTiempo();
+                break;
+            }
+
+            case 10: {
                 tiempo.mostrarTiempo();
                 break; 
             }
 
-            case 10: {
+            case 11: {
                 cout << "Saliendo. " << endl;
                 break;
             }
