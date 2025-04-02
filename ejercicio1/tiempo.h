@@ -3,7 +3,7 @@
 #include <string> 
 using namespace std;
 
-class Tiempo //clase que definimos 
+class Tiempo 
 {
 private:
     int horas;

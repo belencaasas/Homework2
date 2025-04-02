@@ -1,5 +1,4 @@
 #pragma once
- 
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -11,7 +10,7 @@ class Estudiante{
     private: 
         string nombreCompleto;
         int legajo;
-        vector<pair<string,double>> cursosConNotas; //cursos con su nota final
+        vector<pair<string,double>> cursosConNotas; 
         vector<double> notas;
 
     public: 
@@ -21,7 +20,7 @@ class Estudiante{
         void agregarNota(double nota);
         double calcularPromedio();
         bool operator<(const Estudiante& otro);
-        friend ostream& operator<<(ostream& variable, Estudiante estudiante);  //?????
+        friend ostream& operator<<(ostream& variable, Estudiante estudiante);  
 };
 
 class Curso{
@@ -31,14 +30,10 @@ class Curso{
     
     public: 
         Curso() {}
-        Curso(const Curso& otro);  //constructor para la copia ????
+        Curso(const Curso& otro);  
         /*Se realiza una copia profunda porque el vector `estudiantes` contiene punteros a objetos.
         Si se hiciera una copia superficial, el vector copiado y el original compartirían los mismos
-        punteros, lo que podría generar problemas de doble eliminación de memoria (double deletion)
-        al destruir uno de los objetos `Curso`.
-        Al usar `new` para duplicar los objetos `Estudiante`, garantizamos que cada instancia
-        del objeto `Curso` tenga su propio conjunto de objetos independientes.
-        Esto asegura la independencia entre el objeto copiado y el original.*/
+        punteros, lo que podría generar problemas.*/
         ~Curso();
         void inscribir(Estudiante* estudiante);
         void desinscribir(int legajo);
@@ -48,3 +43,7 @@ class Curso{
         Estudiante* buscarEstudiante(int legajo);
 
 };
+
+/*  c. ¿Qué tipo de relación existe entre los objetos curso y estudiante?
+        La relacion que existe entre ambas es de Agregacion ya que mantienen una relacion pero sin una dependencia tota. Si uno de los 
+        dos no existiera a el otro no le afectaria, podria seguir existiendo sin problema*/

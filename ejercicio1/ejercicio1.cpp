@@ -5,7 +5,8 @@
 #include "tiempo.h"
 using namespace std;
 
-bool Tiempo::tiempoEsValido(int h, int m, int s, string abrev){ //manejo de valores ingresados 
+// funcion que maneja si un valor ingresado es valido o no, si las horas / minutos / segundos no estan dentro del rango horario salta un aviso.
+bool Tiempo::tiempoEsValido(int h, int m, int s, string abrev){ 
     if (h < 0 || h > 12 ){
         while (h < 0 || h > 12){
             cout << "La hora ingresada es invalida" << endl;
@@ -45,14 +46,13 @@ bool Tiempo::tiempoEsValido(int h, int m, int s, string abrev){ //manejo de valo
     return true; 
 }
 
-//los constructores 
+
 Tiempo::Tiempo(){
     horas = 0;
     minutos = 0;
     segundos = 0;
     string periodo ="a.m.";
-
-}       //constructor por defecto 
+}
 
 Tiempo::Tiempo(int h){
     if(tiempoEsValido(h,0,0,"a.m."))
@@ -85,14 +85,14 @@ Tiempo::Tiempo(int h , int m  , int s, string a ) {
 
     //funciones que nos permiten ingresar los parametros 
 
-    void Tiempo::sethoras(int h){ //manejo de horas 
+    void Tiempo::sethoras(int h){ 
         if (h >= 0 && h <= 12)
             horas = h;
         else
             cout << "La hora ingresada es invalida, intente nuevamente. " << endl; 
     } 
 
-    void Tiempo::setmintuos(int m){
+    void Tiempo::setmintuos(int m){ 
         if (m >= 0 && m < 60)
             minutos = m;
         else 
@@ -126,13 +126,13 @@ Tiempo::Tiempo(int h , int m  , int s, string a ) {
     } 
 
     void Tiempo::mostrarTodoElTiempo() {
-        int horasajustadas = horas; // maneja las horas para que aparezca 20hs o si son las 12 de la noche 00hs
+        int horasajustadas = horas; // maneja las horas para que aparezca en formato 24hs
         if (abreviatura == "p.m." && horas != 12) {
             horasajustadas = horas + 12;
         }else if (abreviatura == "a.m." && horas == 12){
             horasajustadas = 0;
         }
-        cout << setw(2) << setfill('0') << horasajustadas << ":"  // si el valor tiene menos de 2 digitos rellena con 0
+        cout << setw(2) << setfill('0') << horasajustadas << ":"  
              << setw(2) << setfill('0') << minutos << ":"
              << setw(2) << setfill('0') << segundos << "" << endl;
 
