@@ -2,6 +2,7 @@
 #include "numero.h"
 
 int main(){
+    //parametros ya definidos 
     Numero* entero1= new Entero(10);
     Numero* entero2 = new Entero(19);
 

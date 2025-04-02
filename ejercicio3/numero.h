@@ -28,7 +28,7 @@ class Entero: public Numero {  //la clase entero es una derivada de la clase num
         
 };
 
-class Real: public Numero {  //la clase entero es una derivada de la clase numero
+class Real: public Numero {  //la clase real es una derivada de la clase numero
     private: 
         double valor; 
     public: 
@@ -40,7 +40,7 @@ class Real: public Numero {  //la clase entero es una derivada de la clase numer
         virtual ~Real();
 };
 
-class Complejo: public Numero {  //la clase entero es una derivada de la clase numero
+class Complejo: public Numero {  //la clase complejo es una derivada de la clase numero
     private: 
         double real , imaginario; 
     public: 

@@ -4,7 +4,9 @@ int main(){
     Curso miCurso; 
     int opcion; 
 
+    //menu de opciones que puede elegir el usuario
     while (opcion != 7){
+    cout << endl;
     cout<< "\n------Opciones------\n";
     cout<< "1) Inscribir estudiante " << endl;
     cout<< "2) Desincribir estudiante" <<endl;
@@ -15,11 +17,13 @@ int main(){
     cout<< "7) Salir \n" <<endl;
     cout<< "Ingrese su opcion: ";
     cin >> opcion; 
+    cout << endl;
 
+    //manejo de parametros mal ingresados
     while(opcion > 7 || opcion < 1 || cin.fail()) {
         cout << "El parametro ingresado es incorrecto , vuele a itentar (1-7): ";
         cin.clear(); // limpia el cin
-        cin.ignore(1000,'\n'); //
+        cin.ignore(1000,'\n'); 
         cin >> opcion;
     } 
 

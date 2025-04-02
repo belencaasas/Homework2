@@ -2,11 +2,10 @@
 Numero::~Numero(){}
 
 Entero::Entero(int valor) : valor(valor){}   //define el constructor de la clase entero
-                                            // valor parametros q recbe el constructor 
 
 Numero* Entero::suma(Numero* otro) {  
     Entero* e= dynamic_cast<Entero*>(otro); //un cast dinamico que convierte el puntero a un de tipo entero
-    if(e){  //si el puntero no es nulo 
+    if(e){   
         return new Entero(valor + e->valor);
     }
     return nullptr;
@@ -35,6 +34,9 @@ string Entero::toString(){
 }
 
 Entero::~Entero(){}
+
+
+
 
 
 Real::Real(double valor) : valor(valor){}   
@@ -74,9 +76,12 @@ string Real::toString(){
 Real::~Real(){}
 
 
+
+
+
 Complejo::Complejo(double real,double imaginario) : real(real) , imaginario(imaginario){} 
 
-Numero* Complejo::suma(Numero* otro){
+Numero* Complejo::suma(Numero* otro){ //suma real con real e imaginario con imaginario
     Complejo* c = dynamic_cast<Complejo*>(otro);
     if (c) {
         return new Complejo(real + c->real, imaginario + c->imaginario);
@@ -84,7 +89,7 @@ Numero* Complejo::suma(Numero* otro){
     return nullptr;
 }
 
-Numero* Complejo::resta(Numero* otro){
+Numero* Complejo::resta(Numero* otro){//resta real con real e imaginario con imaginario
     Complejo* c = dynamic_cast<Complejo*>(otro);
     if (c) {
         return new Complejo(real - c->real, imaginario - c->imaginario);
@@ -92,8 +97,8 @@ Numero* Complejo::resta(Numero* otro){
     return nullptr;
 }
 
-Numero* Complejo::multiplicacion(Numero* otro){
-    Complejo* c = dynamic_cast<Complejo*>(otro);
+Numero* Complejo::multiplicacion(Numero* otro){ // la multiplicacion de complejos es de la forma (a + bi)(c + di)  = ac + bd + bci + adi
+    Complejo* c = dynamic_cast<Complejo*>(otro); 
     if (c) {
         double resultReal = real * c->real  -  imaginario * c->imaginario;
         double resulImagi = real * c->imaginario + imaginario * c->real;

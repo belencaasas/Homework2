@@ -31,7 +31,7 @@ class Curso{
     public: 
         Curso() {}
         Curso(const Curso& otro);  
-        /*Se realiza una copia profunda porque el vector `estudiantes` contiene punteros a objetos.
+        /*Se realiza una copia profunda porque el vector "estudiantes" contiene punteros a objetos.
         Si se hiciera una copia superficial, el vector copiado y el original compartirían los mismos
         punteros, lo que podría generar problemas.*/
         ~Curso();
