@@ -1,5 +1,7 @@
 #include <iostream>
-#include "banco.h"
+#include "cuentacorriente.h"
+#include "cuentabancaria.h"
+#include "cajadeahorro.h"
 
 int main(){
     CajaDeAhorro CajaDeAhorro(500,"Belen");

@@ -8,18 +8,18 @@ Forma de compilar el codigo:
 
   EJERCICIO 2: 
   
-      g++ ejercicio2.cpp -Wall -g -o ejercicio2
+      g++ main.cpp estudinte.cpp  curso.cpp -Wall -g -o ejercicio2
       
       ./ejercicio2
 
   EJERCICIO 3: 
    
-      g++ ejercicio3.cpp -Wall -g -o ejercicio3
+      g++ main.cpp entero.cpp real.cpp complejo.cpp -Wall -g -o ejercicio3
       
       ./ejercicio3 
 
   EJERCICIO 4: 
      
-      g++ ejercicio4.cpp -Wall -g -o ejercicio4
+      g++ main.cpp cuentacorriente.cpp cuentabancaria.cpp cajadeahorro.cpp -Wall -g -o ejercicio4
       
       ./ejercicio4

@@ -55,32 +55,20 @@ Tiempo::Tiempo(){
 }
 
 Tiempo::Tiempo(int h){
-    if(tiempoEsValido(h,0,0,"a.m."))
-        horas = h;
+    tiempoEsValido(h,0,0,"a.m.");
 } 
 
 Tiempo::Tiempo(int h, int m) {
-    if(tiempoEsValido(h,m,0,"a.m.")){
-        horas = h;
-        minutos = m; 
-    }
+    tiempoEsValido(h,m,0,"a.m.");
 }
 
 Tiempo::Tiempo(int h , int m, int s) {
-    if(tiempoEsValido(h,m,s,"a.m.")){
-        horas = h; 
-        minutos = m;
-        segundos = s; 
-    }
+    tiempoEsValido(h,m,s,"a.m.");
+    
 }
 
 Tiempo::Tiempo(int h , int m  , int s, string a ) {
-    if(tiempoEsValido(h,m,s,a)){
-        horas = h;
-        minutos = m;
-        segundos = s; 
-        abreviatura = a;
-    }
+    tiempoEsValido(h,m,s,a);
 } 
 
     //funciones que nos permiten ingresar los parametros 
