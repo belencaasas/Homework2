@@ -2,20 +2,16 @@
 
 Curso::Curso(const Curso& otro){
     for (size_t i =0; i < otro.estudiantes.size(); i++){
-        Estudiante* nuevoEstudiante = new Estudiante(*otro.estudiantes[i]);
-        estudiantes.push_back(nuevoEstudiante);
+        estudiantes.push_back(make_unique<Estudiante>(*otro.estudiantes[i]));
     }
 }
 
-Curso::~Curso(){  //destructor
-    for(size_t i=0 ; i < estudiantes.size(); i++){
-        delete estudiantes[i];
-    }
-}
+Curso::~Curso(){}  //destructor
 
-void Curso::inscribir(Estudiante* estudiante){
+void Curso::inscribir(unique_ptr<Estudiante> estudiante){
     if(estudiantes.size() < capacidadMaxEstu){
-        estudiantes.push_back(estudiante);
+        estudiantes.push_back(move(estudiante));
+        cout << "El estudiante " << estudiantes.back()->getNombre() << " esta inscripto" << endl;
     }else{ 
         cout << "El curso esta completo, no se puede inscribir al estudiante." << endl;
     }
@@ -24,7 +20,6 @@ void Curso::inscribir(Estudiante* estudiante){
 void Curso::desinscribir(int legajo){
     for (size_t i = 0; i<estudiantes.size() ; i++){
         if(estudiantes[i]->getLegajo() == legajo){
-            delete estudiantes[i];
             estudiantes.erase(estudiantes.begin() + i);
             cout << "El estudiante con legajo " << legajo << " se desinscribio correctamente." << endl;
             return;
@@ -44,7 +39,7 @@ bool Curso::estaInscripto(int legajo){
 }
 
 void Curso::imprimirEstudiantes(){
-    sort(estudiantes.begin(), estudiantes.end() , [](Estudiante* a , Estudiante* b){
+    sort(estudiantes.begin(), estudiantes.end() , [](unique_ptr<Estudiante>& a, unique_ptr<Estudiante>& b){
         return *a < *b;
     });
     for (size_t i =0 ; i<estudiantes.size(); i++){
@@ -59,7 +54,7 @@ bool Curso::estaCompleto(){
 Estudiante* Curso::buscarEstudiante(int legajo){
     for(size_t i=0 ; i < estudiantes.size(); i++){
         if(estudiantes[i]->getLegajo()==legajo){
-            return estudiantes[i];
+            return estudiantes[i].get();
         }  
     }
     return nullptr;

@@ -1,8 +1,10 @@
 #include "Curso.h"
 
 int main(){
-    Curso miCurso; 
+    Curso miCurso;
     int opcion; 
+
+    
 
     //menu de opciones que puede elegir el usuario
     while (opcion != 7){
@@ -36,8 +38,8 @@ int main(){
             getline(cin,nombre);
             cout << "Ingrese el legajo del estudiante: "; 
             cin >> legajo; 
-            auto* estudiante = new Estudiante(nombre,legajo);
-            miCurso.inscribir(estudiante);
+            auto estudiante = make_unique<Estudiante>(nombre,legajo);
+            miCurso.inscribir(move(estudiante));
             break; 
         }
 
@@ -109,3 +111,8 @@ int main(){
     return 0; 
 
 }
+ 
+
+
+
+
